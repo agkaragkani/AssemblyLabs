@@ -1,0 +1,73 @@
+.data
+
+prompt: .asciiz "Enter upper bound: "
+
+nl: .asciiz "\n"
+
+ 
+
+    .text
+
+    .ent main
+
+    .globl main
+
+     
+
+main:   #adjust the stack
+
+    addiu $sp, $sp, -8
+
+    sw $ra, 4($sp)     # push ra
+
+    sw $s0, 0($sp)      # push num
+
+
+ # ask the user for the number
+
+    li $v0, 4       # print_string
+
+    la $a0, prompt     # a0 = "Enter number"
+
+    syscall
+
+ 
+
+    # read in the number
+
+    li $v0, 5       # read_int
+
+    syscall
+
+    move $s0, $v0       # s1 = num
+
+    move $a1,$s0
+
+    jal asciiConv
+
+    
+    lw $s0, 0($sp)      # pop i
+
+    lw $ra, 4($sp)      # pop lo
+
+    addiu $sp, $sp, 8
+
+    li $v0, 0
+
+
+asciiConv:
+
+	li $v0, 11          # print_string
+
+   	move $a0, $a1       # a0 = Ascii value of i
+
+	syscall
+
+       
+        li $v0, 4       # print_string
+
+        la $a0, nl      # a0 = "\n"
+
+        syscall
+
+        jr $ra

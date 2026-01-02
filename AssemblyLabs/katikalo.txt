@@ -1,0 +1,38 @@
+# Data declaration section
+#
+.data 
+
+
+
+# Strings to be printed
+
+message1:          .asciiz      "Please determine operation, entry (E), inquiry (I) or quit (Q)\n"
+message2:          .asciiz      "\nWrong letter,please try again\n\n"
+message3:          .asciiz      "\nPlease enter the last name:\n"
+message4:          .asciiz      "\nPlease enter the first name:\n"
+message5:          .asciiz      "\nPlease enter the phone number:\n"
+message6:          .asciiz      "\nThank you, the new entry is the following:\n"
+
+firstName:         .space 20
+lastName:          .space 20
+phoneNum:          .space 20
+
+
+.align 2
+phone_catalogue:   .space 600  
+
+
+
+
+
+# Assembly language instructions go in text segment
+#
+.text 
+
+
+
+# Start of code section
+#   
+main: 
+
+  
